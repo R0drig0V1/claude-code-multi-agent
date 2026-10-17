@@ -1,0 +1,18 @@
+{
+  "name": "claude-code-multi-agent",
+  "owner": {
+    "name": "Rodrigo Vidal",
+    "url": "https://github.com/R0drig0V1"
+  },
+  "metadata": {
+    "description": "Multi-agent development workflow for Claude Code: integrator-owned main, one git worktree per session."
+  },
+  "plugins": [
+    {
+      "name": "multi-agent",
+      "source": "./plugin",
+      "description": "Skills, agents, guard hooks and cross-platform notifications for running several Claude Code sessions in parallel on one repository.",
+      "category": "development"
+    }
+  ]
+}
