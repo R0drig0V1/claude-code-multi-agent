@@ -1,0 +1,13 @@
+{
+  "name": "multi-agent",
+  "version": "0.1.0",
+  "description": "Run several Claude Code sessions in parallel on one repository: one integrator session owns main and merges verified pull requests, every other session works in its own git worktree. Includes commit/pr/document/improve-plan/integrate skills, plan-adversary and code-reviewer agents, guard hooks and cross-platform sound + terminal-bell notifications.",
+  "author": {
+    "name": "Rodrigo Vidal",
+    "url": "https://github.com/R0drig0V1"
+  },
+  "homepage": "https://github.com/R0drig0V1/claude-code-multi-agent#readme",
+  "repository": "https://github.com/R0drig0V1/claude-code-multi-agent",
+  "license": "MIT",
+  "keywords": ["multi-agent", "git-worktree", "integrator", "pull-requests", "code-review", "workflow", "hooks", "notifications"]
+}

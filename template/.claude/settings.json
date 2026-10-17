@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "claude-code-multi-agent": {
+      "source": { "source": "github", "repo": "R0drig0V1/claude-code-multi-agent" }
+    }
+  },
+  "enabledPlugins": {
+    "multi-agent@claude-code-multi-agent": true
+  }
+}
