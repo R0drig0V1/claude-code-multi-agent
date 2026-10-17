@@ -1,7 +1,7 @@
 # repo_init
 
 Starting template for new repositories with a Claude Code setup: skills (`/commit`, `/pr`,
-`/document`, `/improve-plan`, `/integrate`), the `plan-adversary` agent, guard hooks for a
+`/document`, `/improve-plan`, `/integrate`), the `plan-adversary` and `code-reviewer` agents, guard hooks for a
 multi-agent workflow (one integrator session owns `main`; everyone else works in a worktree),
 and sound + terminal-bell notifications when a session stops or needs attention.
 

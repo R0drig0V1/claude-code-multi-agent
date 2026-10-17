@@ -42,7 +42,7 @@ scripts/verify-merge.sh            # integrator only: verify a --no-commit merge
   to `docs/plan-reviews/`.
 - Skills: `/commit` (Conventional Commits, no emojis, checks first), `/pr`, `/document`,
   `/improve-plan`, `/integrate` (integrator only).
-- Agents: `plan-adversary` (read-only critic of the plan).
+- Agents: `plan-adversary` (read-only critic of the plan), `code-reviewer` (code review).
 
 ## Multi-agent workflow
 
