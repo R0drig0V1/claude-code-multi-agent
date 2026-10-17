@@ -44,7 +44,14 @@ if [[ "${1:-}" == "--reset-only" ]]; then
 fi
 
 failed_step="setup"
-trap 'status=$?; if [[ $status -ne 0 ]]; then echo; echo "VERIFY FAILED at: $failed_step (exit $status)" >&2; fi' EXIT
+report_failure() {
+    local status=$?
+    if [[ $status -ne 0 ]]; then
+        echo
+        echo "VERIFY FAILED at: $failed_step (exit $status)" >&2
+    fi
+}
+trap report_failure EXIT
 
 failed_step="reset verification state"; reset_state
 if [[ -x scripts/worktree-setup.sh ]]; then
