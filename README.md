@@ -131,20 +131,15 @@ claude plugin validate plugin && claude plugin validate .
 ```
 
 `plugin/skills/security-audit/` is a verbatim copy of `skills/security-audit/` from
-[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) at
-commit `c1c8a8c` (c1c8a8c1471069fb0e188eeaff69b8e8db6564a8), plus its `LICENSE`. Do not edit it here. To update it, review the
-upstream diff since that commit, then:
-
-```bash
-git clone https://github.com/cloudflare/security-audit-skill /tmp/sas
-git -C /tmp/sas checkout <reviewed-commit>
-rm -rf plugin/skills/security-audit
-cp -R /tmp/sas/skills/security-audit plugin/skills/security-audit
-cp /tmp/sas/LICENSE plugin/skills/security-audit/LICENSE
-```
-
-and record the new commit here and in `CHANGELOG.md`. CI runs its two validators' tests
-(`node plugin/skills/security-audit/validate-*.test.cjs`).
+[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill), plus its
+`LICENSE`, at the commit recorded in `.github/security-audit-skill.ref`. Do not edit it here.
+Every Monday `.github/workflows/update-security-audit.yml` (also runnable by hand from the
+Actions tab) runs `.github/scripts/update-security-audit.sh`, which moves the copy to the newest
+upstream commit that is at least 7 days old, like Dependabot's cooldown, and opens a pull
+request with the upstream compare link; review that diff before merging, since the skill's
+text becomes instructions for every agent that loads it. The script also works locally
+(`COOLDOWN_DAYS=0 .github/scripts/update-security-audit.sh` takes the newest commit). CI runs
+the skill's two validators' tests (`node plugin/skills/security-audit/validate-*.test.cjs`).
 
 ## License
 
