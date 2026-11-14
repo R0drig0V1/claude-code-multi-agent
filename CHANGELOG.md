@@ -19,6 +19,13 @@ All notable changes to this project are documented here. The format follows
   `findings.json`, independent verification, reports) when asked for one. CI runs its
   validators' tests.
 
+### Security
+- `ci.yml`: `actions/checkout` pinned by commit SHA (v7.0.1), `persist-credentials: false`,
+  least-privilege `permissions: contents: read` and a concurrency group (zizmor
+  `unpinned-uses`, `artipacked` and `excessive-permissions`).
+- `.github/dependabot.yml`: monthly, grouped updates of the pinned actions with a 7-day
+  cooldown.
+
 ## [0.1.0] - 2026-10-17
 
 ### Added
