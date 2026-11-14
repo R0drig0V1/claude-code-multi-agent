@@ -35,6 +35,11 @@ jobs:
       - name: Python guard compiles
         run: python3 -m py_compile plugin/hooks/guard-main-bash.py
 
+      - name: Vendored security-audit validators
+        run: |
+          node plugin/skills/security-audit/validate-findings.test.cjs
+          node plugin/skills/security-audit/validate-coverage-ledger.test.cjs
+
       - name: Hook and installer smoke tests
         run: |
           git config --global user.email ci@example.com

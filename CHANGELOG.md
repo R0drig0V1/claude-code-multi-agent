@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- Skill `security-audit`: Cloudflare's security-audit skill
+  ([cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill),
+  MIT) vendored unchanged from commit `c1c8a8c`, with its `LICENSE`. Security guidance by
+  default; a full audit (reconnaissance, coverage-led hunting, adversarial validation,
+  `findings.json`, independent verification, reports) when asked for one. CI runs its
+  validators' tests.
+
 ## [0.1.0] - 2026-10-17
 
 ### Added

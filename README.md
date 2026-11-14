@@ -65,6 +65,7 @@ therefore leaves your other repositories alone and only adds the notifications t
 | Integrator | `scripts/integrator.sh` in the main checkout, then `/multi-agent:integrate` |
 | Developer session | `/multi-agent:worktree feat/<name>`, work, `/multi-agent:commit`, `/multi-agent:pr` |
 | Before a phase | `/multi-agent:improve-plan` (red-team review of `docs/phases/`) |
+| Security audit | `/multi-agent:security-audit`, or ask "security audit this codebase"; a full audit writes its reports outside the repository, in `~/security-audit-skill/<repo>/run-<N>` |
 
 A session opened in the main checkout is told by the `SessionStart` hook to create its own
 worktree from the first request that needs changes.
@@ -79,6 +80,7 @@ worktree from the first request that needs changes.
 | Skill | `integrate` | Integrator loop: queue → merge `--no-commit` → `verify-merge.sh` → merge or bounce → update plan |
 | Skill | `document` | Brings docstrings, `docs/`, ADRs and `CLAUDE.md` up to date |
 | Skill | `improve-plan` | Up to 3 adversarial rounds against `docs/phases/` with `plan-adversary` |
+| Skill | `security-audit` | Cloudflare's [security-audit skill](https://github.com/cloudflare/security-audit-skill), vendored unchanged (MIT, its own `LICENSE`): security guidance by default, a six-phase audit with independent verification when asked for one |
 | Agent | `plan-adversary` | Read-only red-team reviewer of the plan |
 | Agent | `code-reviewer` | Read-only bug and security reviewer |
 | Hook | `guard-main-worktree.sh` | Blocks Edit/Write in the main worktree |
@@ -127,6 +129,22 @@ Code runs hooks in Git Bash. Sounds use `afplay` (macOS), `paplay`/`aplay`/`canb
 tests/test-hooks.sh                 # hook + installer smoke tests
 claude plugin validate plugin && claude plugin validate .
 ```
+
+`plugin/skills/security-audit/` is a verbatim copy of `skills/security-audit/` from
+[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) at
+commit `c1c8a8c` (c1c8a8c1471069fb0e188eeaff69b8e8db6564a8), plus its `LICENSE`. Do not edit it here. To update it, review the
+upstream diff since that commit, then:
+
+```bash
+git clone https://github.com/cloudflare/security-audit-skill /tmp/sas
+git -C /tmp/sas checkout <reviewed-commit>
+rm -rf plugin/skills/security-audit
+cp -R /tmp/sas/skills/security-audit plugin/skills/security-audit
+cp /tmp/sas/LICENSE plugin/skills/security-audit/LICENSE
+```
+
+and record the new commit here and in `CHANGELOG.md`. CI runs its two validators' tests
+(`node plugin/skills/security-audit/validate-*.test.cjs`).
 
 ## License
 

@@ -45,7 +45,8 @@ scripts/integrator.sh              # launch the integrator session (main worktre
 - Before starting a phase: `/multi-agent:improve-plan` (the `plan-adversary` agent reviews
   it). Reviews go to `docs/plan-reviews/`.
 - Skills: `/multi-agent:commit` (Conventional Commits, no emojis, checks first), `:pr`,
-  `:document`, `:improve-plan`, `:worktree`, `:integrate` (integrator only).
+  `:document`, `:improve-plan`, `:worktree`, `:integrate` (integrator only), `:security-audit`
+  (Cloudflare's security review and audit workflow).
 - Agents: `plan-adversary` (read-only critic of the plan), `code-reviewer` (read-only bug and
   security review; the integrator uses it on large diffs).
 
