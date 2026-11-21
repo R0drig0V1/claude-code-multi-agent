@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+- The repository is archived (November 2026): read-only, no longer maintained. The README
+  names its successor, [herdr-agent-pool](https://github.com/R0drig0V1/herdr-agent-pool). The
+  weekly update of the vendored security-audit skill stops with it.
+
 ### Added
 - Weekly `update-security-audit.yml` workflow and `.github/scripts/update-security-audit.sh`:
   move the vendored security-audit skill to the newest upstream commit at least 7 days old and
