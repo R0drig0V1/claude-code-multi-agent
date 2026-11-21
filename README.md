@@ -1,8 +1,19 @@
 # claude-code-multi-agent
 
-[![CI](https://github.com/R0drig0V1/claude-code-multi-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/R0drig0V1/claude-code-multi-agent/actions/workflows/ci.yml)
+[![Status: archived](https://img.shields.io/badge/status-archived-lightgrey.svg)](#claude-code-multi-agent)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757.svg)](https://code.claude.com/docs/en/plugins/overview)
+
+> **Archived in November 2026.** This repository is read-only and no longer maintained: it
+> gets no fixes, and issues and pull requests are closed.
+>
+> Its successor is [herdr-agent-pool](https://github.com/R0drig0V1/herdr-agent-pool). It keeps
+> the same idea (an integrator verifies and merges pull requests, every other session works
+> in its own git worktree) and adds a coordinator, a pool of parallel integrators and a
+> machine-wide resource budget. It runs inside [herdr](https://herdr.dev).
+>
+> The plugin described below still installs and works as it was at the last commit. Use it
+> if you need this workflow without herdr; start new projects with herdr-agent-pool.
 
 A [Claude Code](https://code.claude.com) plugin for running **several Claude sessions in
 parallel on one repository** without them stepping on each other or on `main`.
@@ -27,6 +38,8 @@ flowchart LR
 ```
 
 ## Install
+
+The commands below still work: they install the last version, which no longer changes.
 
 ### Plugin + project files (recommended)
 
@@ -133,11 +146,13 @@ claude plugin validate plugin && claude plugin validate .
 `plugin/skills/security-audit/` is a verbatim copy of `skills/security-audit/` from
 [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill), plus its
 `LICENSE`, at the commit recorded in `.github/security-audit-skill.ref`. Do not edit it here.
-Every Monday `.github/workflows/update-security-audit.yml` (also runnable by hand from the
-Actions tab) runs `.github/scripts/update-security-audit.sh`, which moves the copy to the newest
-upstream commit that is at least 7 days old, like Dependabot's cooldown, and opens a pull
-request with the upstream compare link; review that diff before merging, since the skill's
-text becomes instructions for every agent that loads it. The script also works locally
+Until the repository was archived, `.github/workflows/update-security-audit.yml` ran
+`.github/scripts/update-security-audit.sh` every Monday: it moved the copy to the newest
+upstream commit that was at least 7 days old, like Dependabot's cooldown, and opened a pull
+request with the upstream compare link. Workflows do not run in an archived repository, so
+the copy now stays at the recorded commit and gets no upstream fixes. In a fork, review that
+diff before merging, since the skill's text becomes instructions for every agent that loads
+it. The script also works locally
 (`COOLDOWN_DAYS=0 .github/scripts/update-security-audit.sh` takes the newest commit). CI runs
 the skill's two validators' tests (`node plugin/skills/security-audit/validate-*.test.cjs`).
 
